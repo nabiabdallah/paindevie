@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+ <script>   const bibleVerses = [
+    "For God so loved the world, that he gave his only Son, that whoever believes in him should not perish but have eternal life. - John 3:16",
+    "The Lord is my shepherd; I shall not want. - Psalm 23:1",
+    "I can do all things through him who strengthens me. - Philippians 4:13",
+    // Add more verses as needed
+];
+function getRandomVerse(id) {
+    const randomIndex = Math.floor(Math.random() * bibleVerses.length);
+    return document.getElementById(id).textContent= bibleVerses[randomIndex];
+    
+}
+</script>
+</head>
+<body>
+    <h1>Hey</h1>
+    <h2>Hi</h2>
+    <h3 id="title3"><script>getRandomVerse("title3");</script></h3></div>
+</body>
+</html>
