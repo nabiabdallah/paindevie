@@ -5,7 +5,7 @@
 
 
 <!DOCTYPE html><html class=''>
-<head><script src='//production-assets.codepen.io/assets/editor/live/console_runner-079c09a0e3b9ff743e39ee2d5637b9216b3545af0de366d4b9aad9dc87e26bfd.js'></script><script src='//production-assets.codepen.io/assets/editor/live/events_runner-73716630c22bbc8cff4bd0f07b135f00a0bdc5d14629260c3ec49e5606f98fdd.js'></script><script src='//production-assets.codepen.io/assets/editor/live/css_live_reload_init-2c0dc5167d60a5af3ee189d570b1835129687ea2a61bee3513dee3a50c115a77.js'></script>
+<head><meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><script src='//production-assets.codepen.io/assets/editor/live/console_runner-079c09a0e3b9ff743e39ee2d5637b9216b3545af0de366d4b9aad9dc87e26bfd.js'></script><script src='//production-assets.codepen.io/assets/editor/live/events_runner-73716630c22bbc8cff4bd0f07b135f00a0bdc5d14629260c3ec49e5606f98fdd.js'></script><script src='//production-assets.codepen.io/assets/editor/live/css_live_reload_init-2c0dc5167d60a5af3ee189d570b1835129687ea2a61bee3513dee3a50c115a77.js'></script>
   <script>
     const bibleVerses = [
     "لِتَسْكُنْ فِيكُمْ كَلِمَةُ ٱلْمَسِيحِ بِغِنًى، وَأَنْتُمْ بِكُلِّ حِكْمَةٍ مُعَلِّمُونَ وَمُنْذِرُونَ بَعْضُكُمْ بَعْضًا، بِمَزَامِيرَ وَتَسَابِيحَ وَأَغَانِيَّ رُوحِيَّةٍ، بِنِعْمَةٍ، مُتَرَنِّمِينَ فِي قُلُوبِكُمْ لِلرَّبِّ.",
@@ -50,13 +50,15 @@ function getRandomVerse(titleElement) {
 
 function getDailyBible(titleElement){
   var myHeaders = new Headers();
-    myHeaders.append('Content-Type','application/json; charset=UTF-8');
+    myHeaders.append("Content-Type","application/json; charset=utf-8");
     fetch("https://publication.evangelizo.ws/MAA/days/2024-05-09/readings",myHeaders)
-    .then(response => response.text())
-    .then(data => {
-        // Process the data (e.g., alert or further processing)
-        document.getElementById(titleElement).textContent=data; // "google.com"
-    })
+    //fetch("https://service.arabicbible.com/api/bible/versions",myHeaders)
+    .then((response) => response.text())
+    .then((text) => {
+ //   document.getElementById(titleElement).textContent=text;
+    console.log(text);
+  })    
+    
     .catch(error => {
         console.error("Error fetching data:", error);
     });
@@ -457,7 +459,7 @@ body {
 <div class="slider" id="slider" style="--img-prev:url(https://lh3.googleusercontent.com/aC9nyW5dhaYFmWD8fcf8DApjpH08eHEkbCHqmUPHRQ5T3jK-QyNKZYVMehmrvyPdEA_KxWvgZ3_kyOOYOAv99Ow3UoKSvEloleVKGSfLOwOyDV3Q6Dwi1G-NYoa9-t_ofmmskE6BYnVIOnIz2HWlMcijzIEwvKAL_R4z63DaLgG0z_OcGiSQHunwGAPXrBQUv42ZXuIMODq4zxDHczSxJ72b0-_udtdQK3JuT2X8nXCwFoF7GxmOpzXS0H5f50DuCbXoXcx-O7bgBMCXZdMpTxB27-wdXeLmxpYUySXgjSN2NAKmK16DmGLYvw5tMlrqwb8h4MJEEbXjP1pjPxXsahb7UZseEGyn80uLjATANJvusyJWCtzkkxYXPz-yI1rDvfEJKe2eyA-5AvFlzFBSwBMASn8f7mXinUrXMMREkJQjoi89NfZ91G7253OEVQOqcWxddiYtcHCO5v6Pl3QfV2SUTWXgggscDSY2ezjSPpYERNTXnIM_aCyWmIG7ybrfqOB0eVYBAgynyuPVbjd4KuZWZq2Dfu33HX1RuPKglbOuZGD1QbpJnruvUVkAmjDXI40ENN7X=w1600-h766)"> 
   <div class="slider__content" id="slider-content">
     <div class="slider__images">
-      <div class="slider__images-item slider__images-item--active" data-id="1"><img src="img/DSC_0197-01.jpeg"/></div>
+      <div class="slider__images-item slider__images-item--active" data-id="1"><img src="img/IMG_20240507_201857-EDIT.jpg"/></div>
       <div class="slider__images-item" data-id="2"><img src="img/20240503_223047-COLLAGE.jpg"/></div>
       <div class="slider__images-item" data-id="3"><img src="img/DSC_0197-01.jpeg"/></div>
 
@@ -473,10 +475,14 @@ body {
       </div>
       <div class="slider__text-item" data-id="2">
         <div class="slider__text-item-head">
-          <h3>Daily Bible</h3>
+          <h3>إستمع إلى الإنجيل اليومي</h3>
         </div>
         <div class="slider__text-item-info">
-          <p id="detail2"><script>getDailyBible("detail2")</script></p>
+          <audio controls autoplay muted>
+            <source src="https:\/\/files.evangelizo.org\/audio\/MAA\/975_Mc_16,15-20.mp3" type="audio/ogg">
+          </audio>
+          <p id="detail2">
+             إلى الإنجيل اليومي<script>getDailyBible("detail2")</script></p>
         </div>
       </div>
       <div class="slider__text-item" data-id="3">
@@ -835,7 +841,7 @@ function autoSlide() {
     slider.next();
   });
 
-  timer = setTimeout(autoSlide, 20000);
+  timer = setTimeout(autoSlide, 15000);
 }
 
 function stopAutoSlide() {
@@ -848,7 +854,7 @@ function stopAutoSlide() {
 sliderEl.addEventListener('mousemove', stopAutoSlide);
 sliderEl.addEventListener('touchstart', stopAutoSlide);
 
-timer = setTimeout(autoSlide, 20000);
+timer = setTimeout(autoSlide, 15000);
 //# sourceURL=pen.js
 </script>
 
