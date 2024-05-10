@@ -12,7 +12,19 @@
 ];
 function getRandomVerse(id) {
     const randomIndex = Math.floor(Math.random() * bibleVerses.length);
-    return document.getElementById(id).textContent= bibleVerses[randomIndex];
+    var myHeaders = new Headers();
+    myHeaders.append('Content-Type','text/plain; charset=UTF-8');
+    fetch("https://publication.evangelizo.ws/MAA/days/2024-05-09/readings",myHeaders)
+    .then(response => response.text())
+    .then(data => {
+        // Process the data (e.g., alert or further processing)
+        document.getElementById(id).textContent=data; // "google.com"
+    })
+    .catch(error => {
+        console.error("Error fetching data:", error);
+    });
+
+    
     
 }
 </script>
